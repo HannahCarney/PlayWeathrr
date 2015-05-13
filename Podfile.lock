@@ -1,0 +1,30 @@
+PODS:
+  - HexColors (2.2.1)
+  - LBBlurredImage (0.2.2)
+  - Mantle (2.0):
+    - Mantle/extobjc (= 2.0)
+  - Mantle/extobjc (2.0)
+  - ReactiveCocoa (2.3.1):
+    - ReactiveCocoa/UI (= 2.3.1)
+  - ReactiveCocoa/Core (2.3.1):
+    - ReactiveCocoa/no-arc
+  - ReactiveCocoa/no-arc (2.3.1)
+  - ReactiveCocoa/UI (2.3.1):
+    - ReactiveCocoa/Core
+  - TSMessages (0.9.12):
+    - HexColors
+
+DEPENDENCIES:
+  - LBBlurredImage
+  - Mantle
+  - ReactiveCocoa (~> 2.3.1)
+  - TSMessages
+
+SPEC CHECKSUMS:
+  HexColors: abfd172e329dab59888614ccba6f216cec59289d
+  LBBlurredImage: 700634c17922bc2d22343118e7deb6a3ca12db43
+  Mantle: d7c75b6fb789b20f7ae30cd0d09435fe545896ff
+  ReactiveCocoa: 334468a83b2c5f669f7cfb9a084415ee23219b4f
+  TSMessages: 2a52642128d7ab15b46930c810b9c9403a2b58f3
+
+COCOAPODS: 0.37.1
