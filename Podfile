@@ -5,10 +5,10 @@ source 'https://github.com/CocoaPods/Specs.git'
 
 target 'PlayWeathr' do
 
-pod 'Mantle'
-pod 'LBBlurredImage'
-pod 'TSMessages'
-pod 'ReactiveCocoa', '~> 2.3.1' 
+pod 'Mantle', '= 1.5.1'
+pod 'LBBlurredImage', '= 0.2.0'
+pod 'TSMessages', '= 0.9.11'
+pod 'ReactiveCocoa', '= 2.3.1' 
 
 end
 

@@ -552,6 +552,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
+					"-ObjC",
 					"-l\"Pods-PlayWeathr-HexColors\"",
 					"-l\"Pods-PlayWeathr-LBBlurredImage\"",
 					"-l\"Pods-PlayWeathr-Mantle\"",
@@ -579,6 +580,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
+					"-ObjC",
 					"-l\"Pods-PlayWeathr-HexColors\"",
 					"-l\"Pods-PlayWeathr-LBBlurredImage\"",
 					"-l\"Pods-PlayWeathr-Mantle\"",

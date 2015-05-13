@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "ACF98120AB74B9E5B7C26784"
+               BlueprintIdentifier = "128F4474EC4A63A22BF9996C"
                BuildableName = "libPods-PlayWeathr-Mantle.a"
                BlueprintName = "Pods-PlayWeathr-Mantle"
                ReferencedContainer = "container:Pods.xcodeproj">

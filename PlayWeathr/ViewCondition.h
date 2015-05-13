@@ -6,12 +6,10 @@
 //  Copyright (c) 2015 Hannah Carney. All rights reserved.
 //
 
-#import <Mantle.h>
+#import <Mantle/Mantle.h>
 
-// 1
 @interface ViewCondition : MTLModel <MTLJSONSerializing>
 
-// 2
 @property (nonatomic, strong) NSDate *date;
 @property (nonatomic, strong) NSNumber *humidity;
 @property (nonatomic, strong) NSNumber *temperature;
@@ -26,7 +24,6 @@
 @property (nonatomic, strong) NSNumber *windSpeed;
 @property (nonatomic, strong) NSString *icon;
 
-// 3
 - (NSString *)imageName;
 
 @end

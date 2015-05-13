@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D7A6457D1C12643340C059D9"
+               BlueprintIdentifier = "EE084FCAD70DA7C44E9CE442"
                BuildableName = "libPods-PlayWeathr-ReactiveCocoa.a"
                BlueprintName = "Pods-PlayWeathr-ReactiveCocoa"
                ReferencedContainer = "container:Pods.xcodeproj">
