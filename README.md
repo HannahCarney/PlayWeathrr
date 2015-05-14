@@ -1,5 +1,9 @@
 # PlayWeathr
-Learning Objective C
+Learning Objective C by building a weather app that knowns your location and gives you the current temperature as well as 7 day forcast. 
+
+## Important
+
+Scroll down to see Daily Forcast
 
 Technologies used
 ----------
