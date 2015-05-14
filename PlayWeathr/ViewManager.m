@@ -15,10 +15,12 @@
 @property (nonatomic, strong, readwrite) ViewCondition *currentCondition;
 @property (nonatomic, strong, readwrite) CLLocation *currentLocation;
 @property (nonatomic, strong, readwrite) NSArray *dailyForecast;
+@property (readwrite) ViewCondition *locationName;
 
 @property (nonatomic, strong) CLLocationManager *locationManager;
 @property (nonatomic, assign) BOOL isFirstUpdate;
 @property (nonatomic, strong) ViewClient *client;
+
 
 @end
 
@@ -77,12 +79,14 @@
     if (location.horizontalAccuracy > 0) {
         self.currentLocation = location;
         [self.locationManager stopUpdatingLocation];
+        
     }
 }
 
 - (RACSignal *)updateCurrentConditions {
     return [[self.client fetchCurrentConditionsForLocation:self.currentLocation.coordinate] doNext:^(ViewCondition *condition) {
         self.currentCondition = condition;
+        
     }];
 }
 

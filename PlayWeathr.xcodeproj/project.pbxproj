@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2658D4A91B0541220066E13C /* FlickrClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 2658D4A81B0541220066E13C /* FlickrClient.m */; };
 		2658D4B81B0541DF0066E13C /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 2658D4AD1B0541DF0066E13C /* NSObject+SBJSON.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		2658D4B91B0541DF0066E13C /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 2658D4AF1B0541DF0066E13C /* NSString+SBJSON.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		2658D4BA1B0541DF0066E13C /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 2658D4B11B0541DF0066E13C /* SBJSON.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -67,8 +66,6 @@
 
 /* Begin PBXFileReference section */
 		0F8DFEE920032745F841CEA3 /* Pods-PlayWeathr.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlayWeathr.release.xcconfig"; path = "Pods/Target Support Files/Pods-PlayWeathr/Pods-PlayWeathr.release.xcconfig"; sourceTree = "<group>"; };
-		2658D4A71B0541220066E13C /* FlickrClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrClient.h; sourceTree = "<group>"; };
-		2658D4A81B0541220066E13C /* FlickrClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickrClient.m; sourceTree = "<group>"; };
 		2658D4AB1B0541DF0066E13C /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
 		2658D4AC1B0541DF0066E13C /* NSObject+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJSON.h"; sourceTree = "<group>"; };
 		2658D4AD1B0541DF0066E13C /* NSObject+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJSON.m"; sourceTree = "<group>"; };
@@ -214,8 +211,6 @@
 				2674869E1B04011300B7BAA2 /* ViewDailyForecast.m */,
 				267486A01B0401FE00B7BAA2 /* ViewCondition.h */,
 				267486A11B0401FE00B7BAA2 /* ViewCondition.m */,
-				2658D4A71B0541220066E13C /* FlickrClient.h */,
-				2658D4A81B0541220066E13C /* FlickrClient.m */,
 			);
 			path = PlayWeathr;
 			sourceTree = "<group>";
@@ -473,7 +468,6 @@
 				267486961B03FE0600B7BAA2 /* ViewManager.m in Sources */,
 				2658D4BC1B0541DF0066E13C /* SBJsonParser.m in Sources */,
 				267486931B03FDEA00B7BAA2 /* ViewClient.m in Sources */,
-				2658D4A91B0541220066E13C /* FlickrClient.m in Sources */,
 				2658D4BD1B0541DF0066E13C /* SBJsonWriter.m in Sources */,
 				2658D4B81B0541DF0066E13C /* NSObject+SBJSON.m in Sources */,
 				267486381B03FA9A00B7BAA2 /* AppDelegate.m in Sources */,

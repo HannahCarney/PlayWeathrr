@@ -31,13 +31,12 @@ NSString *const FlickrAPIKey = @"9eb9449f0e7fd4350dc97be3d6a3b4fe";
         photoSmallImageData = [[NSMutableArray alloc] init];
         photoURLsLargeImage = [[NSMutableArray alloc] init];
         
-        // Notice that I am hard-coding the search tag at this point (@"iPhone")
-        [self searchFlickrPhotos:@"iPhone"];
+
+        
         
     }
     return self;
 }
-
 
 
 - (void)viewDidLoad {
@@ -99,6 +98,7 @@ NSString *const FlickrAPIKey = @"9eb9449f0e7fd4350dc97be3d6a3b4fe";
     cityLabel.textAlignment = NSTextAlignmentCenter;
     [header addSubview:cityLabel];
     
+    
     // bottom left
     UILabel *temperatureLabel = [[UILabel alloc] initWithFrame:temperatureFrame];
     temperatureLabel.backgroundColor = [UIColor clearColor];
@@ -106,6 +106,7 @@ NSString *const FlickrAPIKey = @"9eb9449f0e7fd4350dc97be3d6a3b4fe";
     temperatureLabel.text = @"0°";
     temperatureLabel.font = [UIFont fontWithName:@"HelveticaNeue-UltraLight" size:120];
     [header addSubview:temperatureLabel];
+    
     
     // bottom right
     UILabel *celciusLabel = [[UILabel alloc] initWithFrame:temperatureFrame];
@@ -129,6 +130,15 @@ NSString *const FlickrAPIKey = @"9eb9449f0e7fd4350dc97be3d6a3b4fe";
     iconView.backgroundColor = [UIColor clearColor];
     [header addSubview:iconView];
     
+
+    
+    [[RACObserve([ViewManager sharedManager], currentCondition)
+      deliverOn:RACScheduler.mainThreadScheduler]
+     subscribeNext:^(ViewCondition *newLocation) {
+         
+//     NSString *locationImageName = [[NSString alloc] newLocation.locationName];
+     }];
+    
     [[RACObserve([ViewManager sharedManager], currentCondition)
       deliverOn:RACScheduler.mainThreadScheduler]
      subscribeNext:^(ViewCondition *newCondition) {
@@ -136,9 +146,13 @@ NSString *const FlickrAPIKey = @"9eb9449f0e7fd4350dc97be3d6a3b4fe";
          celciusLabel.text = [NSString stringWithFormat:@"C"];
          conditionsLabel.text = [newCondition.condition capitalizedString];
          cityLabel.text = [newCondition.locationName capitalizedString];
+         [self searchFlickrPhotos:(newCondition.locationName)];
          iconView.image = [UIImage imageNamed:[newCondition imageName]];
+
      }];
     
+     NSLog(@"Location = %@", cityLabel.text);
+
     
     [[RACObserve([ViewManager sharedManager], dailyForecast)
       deliverOn:RACScheduler.mainThreadScheduler]
@@ -149,6 +163,8 @@ NSString *const FlickrAPIKey = @"9eb9449f0e7fd4350dc97be3d6a3b4fe";
     
     [[ViewManager sharedManager] findCurrentLocation];
 }
+
+
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
     return UIStatusBarStyleLightContent;
@@ -209,7 +225,9 @@ NSString *const FlickrAPIKey = @"9eb9449f0e7fd4350dc97be3d6a3b4fe";
     cell.textLabel.text = title;
     cell.detailTextLabel.text = @"";
     cell.imageView.image = nil;
+    
 }
+
 
 - (void)configureDailyCell:(UITableViewCell *)cell weather:(ViewCondition *)weather {
     cell.textLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:18];
@@ -260,7 +278,7 @@ NSString *const FlickrAPIKey = @"9eb9449f0e7fd4350dc97be3d6a3b4fe";
         
         // Build and save the URL to the large image so we can zoom
         // in on the image if requested
-        photoURLString = [NSString stringWithFormat:@"https://farm%@.static.flickr.com/%@/%@_%@_m.jpg", [photo objectForKey:@"farm"], [photo objectForKey:@"server"], [photo objectForKey:@"id"], [photo objectForKey:@"secret"]];
+        photoURLString = [NSString stringWithFormat:@"https://farm%@.static.flickr.com/%@/%@_%@.jpg", [photo objectForKey:@"farm"], [photo objectForKey:@"server"], [photo objectForKey:@"id"], [photo objectForKey:@"secret"]];
         [photoURLsLargeImage addObject:[NSURL URLWithString:photoURLString]];
         
         NSLog(@"photoURLsLareImage: %@\n\n", photoURLString);
@@ -268,10 +286,11 @@ NSString *const FlickrAPIKey = @"9eb9449f0e7fd4350dc97be3d6a3b4fe";
     
 }
 
+
 -(void)searchFlickrPhotos:(NSString *)text
 {
     // Build the string to call the Flickr API
-    NSString *urlString = [NSString stringWithFormat:@"https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=%@&tags=%@&per_page=15&format=json&nojsoncallback=1", FlickrAPIKey, text];
+    NSString *urlString = [NSString stringWithFormat:@"https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=%@&tags=%@&per_page=1&format=json&nojsoncallback=1", FlickrAPIKey, text];
     
     // Create NSURL string from formatted string
     NSURL *url = [NSURL URLWithString:urlString];
