@@ -21,6 +21,8 @@ cd PlayWeathrr
 How to run locally
 ----
 
+* [Install Pods](https://cocoapods.org/)
+
 ```sh
 pod install
 ```
