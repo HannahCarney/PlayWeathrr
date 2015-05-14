@@ -21,7 +21,6 @@
 
 @property (nonatomic, strong, readonly) CLLocation *currentLocation;
 @property (nonatomic, strong, readonly) ViewCondition *currentCondition;
-@property (nonatomic, strong, readonly) NSArray *hourlyForecast;
 @property (nonatomic, strong, readonly) NSArray *dailyForecast;
 
 - (void)findCurrentLocation;

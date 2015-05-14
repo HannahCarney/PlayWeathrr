@@ -14,7 +14,6 @@
 
 @property (nonatomic, strong, readwrite) ViewCondition *currentCondition;
 @property (nonatomic, strong, readwrite) CLLocation *currentLocation;
-@property (nonatomic, strong, readwrite) NSArray *hourlyForecast;
 @property (nonatomic, strong, readwrite) NSArray *dailyForecast;
 
 @property (nonatomic, strong) CLLocationManager *locationManager;
@@ -45,12 +44,11 @@
         
         [[[[RACObserve(self, currentLocation)
             ignore:nil]
-           // Flatten and subscribe to all 3 signals when currentLocation updates
+           // Flatten and subscribe to all signals when currentLocation updates
            flattenMap:^(CLLocation *newLocation) {
                return [RACSignal merge:@[
                                          [self updateCurrentConditions],
-                                         [self updateDailyForecast],
-                                         [self updateHourlyForecast]
+                                         [self updateDailyForecast]
                                          ]];
            }] deliverOn:RACScheduler.mainThreadScheduler]
          subscribeError:^(NSError *error) {
@@ -88,11 +86,6 @@
     }];
 }
 
-- (RACSignal *)updateHourlyForecast {
-    return [[self.client fetchHourlyForecastForLocation:self.currentLocation.coordinate] doNext:^(NSArray *conditions) {
-        self.hourlyForecast = conditions;
-    }];
-}
 
 - (RACSignal *)updateDailyForecast {
     return [[self.client fetchDailyForecastForLocation:self.currentLocation.coordinate] doNext:^(NSArray *conditions) {

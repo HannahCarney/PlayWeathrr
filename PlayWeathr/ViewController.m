@@ -17,7 +17,6 @@
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, assign) CGFloat screenHeight;
 
-@property (nonatomic, strong) NSDateFormatter *hourlyFormatter;
 @property (nonatomic, strong) NSDateFormatter *dailyFormatter;
 
 @end
@@ -26,14 +25,13 @@
 
 - (id)init {
     if (self = [super init]) {
-        _hourlyFormatter = [[NSDateFormatter alloc] init];
-        _hourlyFormatter.dateFormat = @"h a";
-        
         _dailyFormatter = [[NSDateFormatter alloc] init];
         _dailyFormatter.dateFormat = @"EEEE";
     }
     return self;
 }
+
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -63,17 +61,13 @@
     
     CGFloat inset = 20;
     
-    CGFloat temperatureHeight = 110;
+    CGFloat temperatureHeight = 150;
     CGFloat hiloHeight = 40;
     CGFloat iconHeight = 30;
     
-    CGRect hiloFrame = CGRectMake(inset,
-                                  headerFrame.size.height - hiloHeight,
-                                  headerFrame.size.width - (2 * inset),
-                                  hiloHeight);
     CGRect temperatureFrame = CGRectMake(inset,
                                          headerFrame.size.height - (temperatureHeight + hiloHeight),
-                                         headerFrame.size.width - (2 * inset),
+                                         headerFrame.size.width - (3 * inset),
                                          temperatureHeight);
     
     CGRect iconFrame = CGRectMake(inset,
@@ -101,28 +95,29 @@
     // bottom left
     UILabel *temperatureLabel = [[UILabel alloc] initWithFrame:temperatureFrame];
     temperatureLabel.backgroundColor = [UIColor clearColor];
-    temperatureLabel.textColor = [UIColor whiteColor];
+    temperatureLabel.textColor = [UIColor blackColor];
     temperatureLabel.text = @"0°";
     temperatureLabel.font = [UIFont fontWithName:@"HelveticaNeue-UltraLight" size:120];
     [header addSubview:temperatureLabel];
     
-    // bottom left
-    UILabel *hiloLabel = [[UILabel alloc] initWithFrame:hiloFrame];
-    hiloLabel.backgroundColor = [UIColor clearColor];
-    hiloLabel.textColor = [UIColor whiteColor];
-    hiloLabel.text = @"0° / 0°";
-    hiloLabel.font = [UIFont fontWithName:@"HelveticaNeue-UltraLight" size:28];
-    [header addSubview:hiloLabel];
+    // bottom right
+    UILabel *celciusLabel = [[UILabel alloc] initWithFrame:temperatureFrame];
+    celciusLabel.backgroundColor = [UIColor clearColor];
+    celciusLabel.textColor = [UIColor blackColor];
+    celciusLabel.font = [UIFont fontWithName:@"HelveticaNeue-UltraLight" size:75];
+    celciusLabel.textAlignment = NSTextAlignmentRight;
+    [header addSubview:celciusLabel];
     
     // bottom left
     UILabel *conditionsLabel = [[UILabel alloc] initWithFrame:conditionsFrame];
     conditionsLabel.backgroundColor = [UIColor clearColor];
-    conditionsLabel.font = [UIFont fontWithName:@"HelveticaNeue-UltraLight" size:18];
-    conditionsLabel.textColor = [UIColor whiteColor];
+    conditionsLabel.font = [UIFont fontWithName:@"HelveticaNeue-UltraLight" size:24];
+    conditionsLabel.textColor = [UIColor blackColor];
     [header addSubview: conditionsLabel];
     
     // bottom left
     UIImageView *iconView = [[UIImageView alloc] initWithFrame:iconFrame];
+    [iconView setTintColor:[UIColor blackColor]];
     iconView.contentMode = UIViewContentModeScaleAspectFit;
     iconView.backgroundColor = [UIColor clearColor];
     [header addSubview:iconView];
@@ -131,26 +126,12 @@
       deliverOn:RACScheduler.mainThreadScheduler]
      subscribeNext:^(ViewCondition *newCondition) {
          temperatureLabel.text = [NSString stringWithFormat:@"%.0f°",newCondition.temperature.floatValue];
+         celciusLabel.text = [NSString stringWithFormat:@"C"];
          conditionsLabel.text = [newCondition.condition capitalizedString];
          cityLabel.text = [newCondition.locationName capitalizedString];
-         
          iconView.image = [UIImage imageNamed:[newCondition imageName]];
      }];
     
-    RAC(hiloLabel, text) = [[RACSignal combineLatest:@[
-                                                       RACObserve([ViewManager sharedManager], currentCondition.tempHigh),
-                                                       RACObserve([ViewManager sharedManager], currentCondition.tempLow)
-                                                       ]
-                                              reduce:^(NSNumber *hi, NSNumber *low) {
-                                                  return [NSString  stringWithFormat:@"%.0f° / %.0f°",hi.floatValue,low.floatValue];
-                                              }]
-                            deliverOn:RACScheduler.mainThreadScheduler];
-    
-    [[RACObserve([ViewManager sharedManager], hourlyForecast)
-      deliverOn:RACScheduler.mainThreadScheduler]
-     subscribeNext:^(NSArray *newForecast) {
-         [self.tableView reloadData];
-     }];
     
     [[RACObserve([ViewManager sharedManager], dailyForecast)
       deliverOn:RACScheduler.mainThreadScheduler]
@@ -184,16 +165,11 @@
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 2;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if (section == 0) {
-        return MIN([[ViewManager sharedManager].hourlyForecast count], 6) + 1;
-    }
-    else {
-        return MIN([[ViewManager sharedManager].dailyForecast count], 6) + 1;
-    }
+    return MIN([[ViewManager sharedManager].dailyForecast count], 7) + 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -208,16 +184,7 @@
     cell.backgroundColor = [UIColor colorWithWhite:0 alpha:0.2];
     cell.textLabel.textColor = [UIColor whiteColor];
     
-    if (indexPath.section == 0) {
-        if(indexPath.row == 0) {
-            [self configureHeaderCell:cell title:@"Hourly Forecast"];
-        }
-        else {
-            ViewCondition *weather = [ViewManager sharedManager].hourlyForecast[indexPath.row - 1];
-            [self configureHourlyCell:cell weather:weather];
-        }
-    }
-    else if(indexPath.section == 1) {
+    if(indexPath.section == 0) {
         if(indexPath.row == 0) {
             [self configureHeaderCell:cell title:@"Daily Forecast"];
         }
@@ -237,15 +204,6 @@
     cell.imageView.image = nil;
 }
 
-- (void)configureHourlyCell:(UITableViewCell *)cell weather:(ViewCondition *)weather {
-    cell.textLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:18];
-    cell.detailTextLabel.font = [UIFont fontWithName:@"HelveticaNeue-Medium" size:18];
-    cell.textLabel.text = [self.hourlyFormatter stringFromDate:weather.date];
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%.0f°",weather.temperature.floatValue];
-    cell.imageView.image = [UIImage imageNamed:[weather imageName]];
-    cell.imageView.contentMode = UIViewContentModeScaleAspectFit;
-}
-
 - (void)configureDailyCell:(UITableViewCell *)cell weather:(ViewCondition *)weather {
     cell.textLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:18];
     cell.detailTextLabel.font = [UIFont fontWithName:@"HelveticaNeue-Medium" size:18];
@@ -253,6 +211,7 @@
     cell.detailTextLabel.text = [NSString stringWithFormat:@"%.0f° / %.0f°",
                                  weather.tempHigh.floatValue,
                                  weather.tempLow.floatValue];
+    cell.detailTextLabel.textColor = [UIColor whiteColor];
     cell.imageView.image = [UIImage imageNamed:[weather imageName]];
     cell.imageView.contentMode = UIViewContentModeScaleAspectFit;
 }
@@ -275,14 +234,5 @@
     self.blurredImageView.alpha = percent;
 }
 
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
 
 @end
