@@ -146,12 +146,17 @@ NSString *const FlickrAPIKey = @"9eb9449f0e7fd4350dc97be3d6a3b4fe";
          celciusLabel.text = [NSString stringWithFormat:@"C"];
          conditionsLabel.text = [newCondition.condition capitalizedString];
          cityLabel.text = [newCondition.locationName capitalizedString];
-         [self searchFlickrPhotos:(newCondition.locationName)];
          iconView.image = [UIImage imageNamed:[newCondition imageName]];
-
+         if (cityLabel.text != nil)
+         {
+             [self searchFlickrPhotos: (@"%@", [cityLabel.text stringByReplacingOccurrencesOfString:@" " withString:@""])];
+            NSLog(@"Location name = %@", cityLabel.text);
+           
+         }
+         
      }];
     
-     NSLog(@"Location = %@", cityLabel.text);
+    
 
     
     [[RACObserve([ViewManager sharedManager], dailyForecast)
@@ -276,12 +281,12 @@ NSString *const FlickrAPIKey = @"9eb9449f0e7fd4350dc97be3d6a3b4fe";
         // the cell.image value (see cellForRowAtIndexPath:)
         [photoSmallImageData addObject:[NSData dataWithContentsOfURL:[NSURL URLWithString:photoURLString]]];
         
-        // Build and save the URL to the large image so we can zoom
-        // in on the image if requested
+//         Build and save the URL to the large image so we can zoom
+//         in on the image if requested
         photoURLString = [NSString stringWithFormat:@"https://farm%@.static.flickr.com/%@/%@_%@.jpg", [photo objectForKey:@"farm"], [photo objectForKey:@"server"], [photo objectForKey:@"id"], [photo objectForKey:@"secret"]];
         [photoURLsLargeImage addObject:[NSURL URLWithString:photoURLString]];
         
-        NSLog(@"photoURLsLareImage: %@\n\n", photoURLString);
+        NSLog(@"photoURLsLargeImage: %@\n\n", photoURLString);
     }
     
 }
