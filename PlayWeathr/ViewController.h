@@ -12,5 +12,10 @@
 
 <UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate>
 
-@end
+{
+    NSMutableArray  *photoTitles;         // Titles of images
+    NSMutableArray  *photoSmallImageData; // Image data (thumbnail)
+    NSMutableArray  *photoURLsLargeImage; // URL to larger image
+}
 
+@end
