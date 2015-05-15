@@ -30,7 +30,6 @@ NSString *const FlickrAPIKey = @"9eb9449f0e7fd4350dc97be3d6a3b4fe";
         
         // Initialize our arrays
         photoTitles = [[NSMutableArray alloc] init];
-        photoSmallImageData = [[NSMutableArray alloc] init];
         photoURLsLargeImage = [[NSMutableArray alloc] init];
     
     }
@@ -49,7 +48,7 @@ NSString *const FlickrAPIKey = @"9eb9449f0e7fd4350dc97be3d6a3b4fe";
       deliverOn:RACScheduler.mainThreadScheduler]
      subscribeNext:^(ViewCondition *newCondition) {
          if (newCondition.locationName != nil) {
-          [self searchFlickrPhotos: (@"%@", [newCondition.locationName stringByReplacingOccurrencesOfString:@" " withString:@""])];
+          [self searchFlickrPhotos: ([newCondition.locationName stringByReplacingOccurrencesOfString:@" " withString:@""])];
             NSLog(@"Location name = %@", newCondition.locationName);
          }
      }
@@ -158,28 +157,12 @@ NSString *const FlickrAPIKey = @"9eb9449f0e7fd4350dc97be3d6a3b4fe";
     // Loop through each entry in the dictionary...
     for (NSDictionary *photo in photos)
     {
-        // Get title of the image
-        NSString *title = [photo objectForKey:@"title"];
         
-        // Save the title to the photo titles array
-        [photoTitles addObject:(title.length > 0 ? title : @"Untitled")];
         
         // Build the URL to where the image is stored (see the Flickr API)
         // In the format https://farmX.static.flickr.com/server/id/secret
         // Notice the "_s" which requests a "small" image 75 x 75 pixels
-        NSString *photoURLString = [NSString stringWithFormat:@"https://farm%@.static.flickr.com/%@/%@_%@_s.jpg", [photo objectForKey:@"farm"], [photo objectForKey:@"server"], [photo objectForKey:@"id"], [photo objectForKey:@"secret"]];
-        
-        
-        NSLog(@"photoURLString: %@", photoURLString);
-        
-        // The performance (scrolling) of the table will be much better if we
-        // build an array of the image data here, and then add this data as
-        // the cell.image value (see cellForRowAtIndexPath:)
-        [photoSmallImageData addObject:[NSData dataWithContentsOfURL:[NSURL URLWithString:photoURLString]]];
-        
-//         Build and save the URL to the large image so we can zoom
-//         in on the image if requested
-        photoURLString = [NSString stringWithFormat:@"https://farm%@.static.flickr.com/%@/%@_%@.jpg", [photo objectForKey:@"farm"], [photo objectForKey:@"server"], [photo objectForKey:@"id"], [photo objectForKey:@"secret"]];
+        NSString *photoURLString = [NSString stringWithFormat:@"https://farm%@.static.flickr.com/%@/%@_%@.jpg", [photo objectForKey:@"farm"], [photo objectForKey:@"server"], [photo objectForKey:@"id"], [photo objectForKey:@"secret"]];
         [photoURLsLargeImage addObject:[NSURL URLWithString:photoURLString]];
         
         NSLog(@"photoURLsLargeImage: %@\n\n", photoURLString);
@@ -188,13 +171,9 @@ NSString *const FlickrAPIKey = @"9eb9449f0e7fd4350dc97be3d6a3b4fe";
         self.backgroundFromFlickr = [UIImage imageWithData: imageData];
         [imageData release];
         NSLog(@"%@", self.backgroundFromFlickr);
-        if (self.backgroundFromFlickr != nil)
-        {
-            [self replaceBackground];
-        
-        }
+        [self replaceBackground];
     }
-    
+
 }
 
 
