@@ -1,3 +1,11 @@
+//
+//  ViewController.m
+//  PlayWeathr
+//
+//  Created by Hannah Carney on 5/13/15.
+//  Copyright (c) 2015 Hannah Carney. All rights reserved.
+//
+
 #import "ViewController.h"
 #import "ViewManager.h"
 #import "NSString+SBJSON.h"
@@ -37,8 +45,6 @@ NSString *const FlickrAPIKey = @"9eb9449f0e7fd4350dc97be3d6a3b4fe";
     return self;
 }
 
-
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -64,8 +70,6 @@ NSString *const FlickrAPIKey = @"9eb9449f0e7fd4350dc97be3d6a3b4fe";
     
     [[ViewManager sharedManager] findCurrentLocation];
      }
-
-
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
     return UIStatusBarStyleLightContent;
@@ -158,7 +162,6 @@ NSString *const FlickrAPIKey = @"9eb9449f0e7fd4350dc97be3d6a3b4fe";
     // Loop through each entry in the dictionary...
     for (NSDictionary *photo in photos)
     {
-        
         // Build the URL to where the image is stored (see the Flickr API)
         // In the format https://farmX.static.flickr.com/server/id/secret
         NSString *photoURLString = [NSString stringWithFormat:@"https://farm%@.static.flickr.com/%@/%@_%@.jpg", [photo objectForKey:@"farm"], [photo objectForKey:@"server"], [photo objectForKey:@"id"], [photo objectForKey:@"secret"]];
@@ -302,17 +305,12 @@ NSString *const FlickrAPIKey = @"9eb9449f0e7fd4350dc97be3d6a3b4fe";
     [[RACObserve([ViewManager sharedManager], currentCondition)
       deliverOn:RACScheduler.mainThreadScheduler]
      subscribeNext:^(ViewCondition *newCondition) {
-         temperatureLabel.text = [NSString stringWithFormat:@"%.0f°",newCondition.temperature.floatValue];
-         celciusLabel.text = [NSString stringWithFormat:@"C"];
-         conditionsLabel.text = [newCondition.condition capitalizedString];
-         cityLabel.text = [newCondition.locationName capitalizedString];
-         iconView.image = [UIImage imageNamed:[newCondition imageName]];
+     temperatureLabel.text = [NSString stringWithFormat:@"%.0f°",newCondition.temperature.floatValue];
+     celciusLabel.text = [NSString stringWithFormat:@"C"];
+     conditionsLabel.text = [newCondition.condition capitalizedString];
+     cityLabel.text = [newCondition.locationName capitalizedString];
+     iconView.image = [UIImage imageNamed:[newCondition imageName]];
      }];
-
-        
-
 }
-
-
 
 @end
