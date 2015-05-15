@@ -32,10 +32,7 @@ NSString *const FlickrAPIKey = @"9eb9449f0e7fd4350dc97be3d6a3b4fe";
         photoTitles = [[NSMutableArray alloc] init];
         photoSmallImageData = [[NSMutableArray alloc] init];
         photoURLsLargeImage = [[NSMutableArray alloc] init];
-        
-
-        
-        
+    
     }
     return self;
 }
@@ -45,110 +42,19 @@ NSString *const FlickrAPIKey = @"9eb9449f0e7fd4350dc97be3d6a3b4fe";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    NSLog(@"%@", self.backgroundFromFlickr);
-    
     self.screenHeight = [UIScreen mainScreen].bounds.size.height;
-    
-    
-//    UIImage *background = [UIImage imageNamed:@"bg"];
-//    self.backgroundImageView = [[UIImageView alloc] initWithImage:background];
-//    self.backgroundImageView.contentMode = UIViewContentModeScaleAspectFill;
-//    [self.view addSubview: self.backgroundImageView];
-//    self.blurredImageView = [[UIImageView alloc] init];
-//    self.blurredImageView.contentMode = UIViewContentModeScaleAspectFill;
-//    self.blurredImageView.alpha = 0;
-//    [self.blurredImageView setImageToBlur:background blurRadius:10 completionBlock:nil];
-//    [self.view addSubview:self.blurredImageView];
-//    
-//    
-//    self.tableView = [[UITableView alloc] init];
-//    self.tableView.backgroundColor = [UIColor clearColor];
-//    self.tableView.delegate = self;
-//    self.tableView.dataSource = self;
-//    self.tableView.separatorColor = [UIColor colorWithWhite:1 alpha:0.2];
-//    self.tableView.pagingEnabled = YES;
-//    [self.view addSubview:self.tableView];
-//    
-//    CGRect headerFrame = [UIScreen mainScreen].bounds;
-//    
-//    CGFloat inset = 20;
-//    
-//    CGFloat temperatureHeight = 150;
-//    CGFloat hiloHeight = 40;
-//    CGFloat iconHeight = 30;
-//    
-//    CGRect temperatureFrame = CGRectMake(inset,
-//                                         headerFrame.size.height - (temperatureHeight + hiloHeight),
-//                                         headerFrame.size.width - (3 * inset),
-//                                         temperatureHeight);
-//    
-//    CGRect iconFrame = CGRectMake(inset,
-//                                  temperatureFrame.origin.y - iconHeight,
-//                                  iconHeight,
-//                                  iconHeight);
-//    
-//    CGRect conditionsFrame = iconFrame;
-//    conditionsFrame.size.width = self.view.bounds.size.width - (((2 * inset) + iconHeight) + 10);
-//    conditionsFrame.origin.x = iconFrame.origin.x + (iconHeight + 10);
-//    
-//    UIView *header = [[UIView alloc] initWithFrame:headerFrame];
-//    header.backgroundColor = [UIColor clearColor];
-//    self.tableView.tableHeaderView = header;
-//    
-//    // top
-//    UILabel *cityLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 20, self.view.bounds.size.width, 30)];
-//    cityLabel.backgroundColor = [UIColor clearColor];
-//    cityLabel.textColor = [UIColor whiteColor];
-//    cityLabel.text = @"Loading...";
-//    cityLabel.font = [UIFont fontWithName:@"HelveticaNeue-UltraLight" size:18];
-//    cityLabel.textAlignment = NSTextAlignmentCenter;
-//    [header addSubview:cityLabel];
-//    
-//    
-//    // bottom left
-//    UILabel *temperatureLabel = [[UILabel alloc] initWithFrame:temperatureFrame];
-//    temperatureLabel.backgroundColor = [UIColor clearColor];
-//    temperatureLabel.textColor = [UIColor blackColor];
-//    temperatureLabel.text = @"0°";
-//    temperatureLabel.font = [UIFont fontWithName:@"HelveticaNeue-UltraLight" size:120];
-//    [header addSubview:temperatureLabel];
-//    
-//    
-//    // bottom right
-//    UILabel *celciusLabel = [[UILabel alloc] initWithFrame:temperatureFrame];
-//    celciusLabel.backgroundColor = [UIColor clearColor];
-//    celciusLabel.textColor = [UIColor blackColor];
-//    celciusLabel.font = [UIFont fontWithName:@"HelveticaNeue-UltraLight" size:75];
-//    celciusLabel.textAlignment = NSTextAlignmentRight;
-//    [header addSubview:celciusLabel];
-//    
-//    // bottom left
-//    UILabel *conditionsLabel = [[UILabel alloc] initWithFrame:conditionsFrame];
-//    conditionsLabel.backgroundColor = [UIColor clearColor];
-//    conditionsLabel.font = [UIFont fontWithName:@"HelveticaNeue-UltraLight" size:24];
-//    conditionsLabel.textColor = [UIColor blackColor];
-//    [header addSubview: conditionsLabel];
-//    
-//    // bottom left
-//    UIImageView *iconView = [[UIImageView alloc] initWithFrame:iconFrame];
-//    [iconView setTintColor:[UIColor blackColor]];
-//    iconView.contentMode = UIViewContentModeScaleAspectFit;
-//    iconView.backgroundColor = [UIColor clearColor];
-//    [header addSubview:iconView];
     
     
     [[RACObserve([ViewManager sharedManager], currentCondition)
       deliverOn:RACScheduler.mainThreadScheduler]
      subscribeNext:^(ViewCondition *newCondition) {
-          [self searchFlickrPhotos: (@"%@", [newCondition.condition stringByReplacingOccurrencesOfString:@" " withString:@""])];
-            NSLog(@"Location name = %@", newCondition.condition);
-           
+         if (newCondition.locationName != nil) {
+          [self searchFlickrPhotos: (@"%@", [newCondition.locationName stringByReplacingOccurrencesOfString:@" " withString:@""])];
+            NSLog(@"Location name = %@", newCondition.locationName);
          }
-         
+     }
+     
      ];
-    
-    
-
     
     [[RACObserve([ViewManager sharedManager], dailyForecast)
       deliverOn:RACScheduler.mainThreadScheduler]
@@ -282,9 +188,11 @@ NSString *const FlickrAPIKey = @"9eb9449f0e7fd4350dc97be3d6a3b4fe";
         self.backgroundFromFlickr = [UIImage imageWithData: imageData];
         [imageData release];
         NSLog(@"%@", self.backgroundFromFlickr);
-        [self replaceBackground];
+        if (self.backgroundFromFlickr != nil)
+        {
+            [self replaceBackground];
         
-
+        }
     }
     
 }
@@ -326,7 +234,6 @@ NSString *const FlickrAPIKey = @"9eb9449f0e7fd4350dc97be3d6a3b4fe";
 - (void)replaceBackground {
     
 
-    
     self.backgroundImageView = [[UIImageView alloc] initWithImage:self.backgroundFromFlickr];
     self.backgroundImageView.contentMode = UIViewContentModeScaleAspectFill;
     [self.view addSubview: self.backgroundImageView];
@@ -385,7 +292,7 @@ NSString *const FlickrAPIKey = @"9eb9449f0e7fd4350dc97be3d6a3b4fe";
     // bottom left
     UILabel *temperatureLabel = [[UILabel alloc] initWithFrame:temperatureFrame];
     temperatureLabel.backgroundColor = [UIColor clearColor];
-    temperatureLabel.textColor = [UIColor blackColor];
+    temperatureLabel.textColor = [UIColor whiteColor];
     temperatureLabel.text = @"0°";
     temperatureLabel.font = [UIFont fontWithName:@"HelveticaNeue-UltraLight" size:120];
     [header addSubview:temperatureLabel];
@@ -394,7 +301,7 @@ NSString *const FlickrAPIKey = @"9eb9449f0e7fd4350dc97be3d6a3b4fe";
     // bottom right
     UILabel *celciusLabel = [[UILabel alloc] initWithFrame:temperatureFrame];
     celciusLabel.backgroundColor = [UIColor clearColor];
-    celciusLabel.textColor = [UIColor blackColor];
+    celciusLabel.textColor = [UIColor whiteColor];
     celciusLabel.font = [UIFont fontWithName:@"HelveticaNeue-UltraLight" size:75];
     celciusLabel.textAlignment = NSTextAlignmentRight;
     [header addSubview:celciusLabel];
@@ -403,7 +310,7 @@ NSString *const FlickrAPIKey = @"9eb9449f0e7fd4350dc97be3d6a3b4fe";
     UILabel *conditionsLabel = [[UILabel alloc] initWithFrame:conditionsFrame];
     conditionsLabel.backgroundColor = [UIColor clearColor];
     conditionsLabel.font = [UIFont fontWithName:@"HelveticaNeue-UltraLight" size:24];
-    conditionsLabel.textColor = [UIColor blackColor];
+    conditionsLabel.textColor = [UIColor whiteColor];
     [header addSubview: conditionsLabel];
     
     // bottom left
