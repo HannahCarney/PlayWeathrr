@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "4E6F60096A03C2E1401FEDD5"
+               BlueprintIdentifier = "520B7ACFD7300174C5F1516B"
                BuildableName = "libPods-PlayWeathr-LBBlurredImage.a"
                BlueprintName = "Pods-PlayWeathr-LBBlurredImage"
                ReferencedContainer = "container:Pods.xcodeproj">

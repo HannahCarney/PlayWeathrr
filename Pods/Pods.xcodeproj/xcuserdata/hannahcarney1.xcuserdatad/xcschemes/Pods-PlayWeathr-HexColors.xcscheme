@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "9C08FADA6B0F27DC30232C59"
+               BlueprintIdentifier = "BA0E7F9E00B4476A5ABC2CE1"
                BuildableName = "libPods-PlayWeathr-HexColors.a"
                BlueprintName = "Pods-PlayWeathr-HexColors"
                ReferencedContainer = "container:Pods.xcodeproj">
