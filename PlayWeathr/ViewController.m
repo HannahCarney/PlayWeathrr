@@ -5,6 +5,7 @@
 @interface ViewController ()
 
 @property (nonatomic, strong) UIImageView *backgroundImageView;
+@property (nonatomic, strong) UIImage *backgroundFromFlickr;
 @property (nonatomic, strong) UIImageView *blurredImageView;
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, assign) CGFloat screenHeight;
@@ -130,14 +131,6 @@ NSString *const FlickrAPIKey = @"9eb9449f0e7fd4350dc97be3d6a3b4fe";
     iconView.backgroundColor = [UIColor clearColor];
     [header addSubview:iconView];
     
-
-    
-    [[RACObserve([ViewManager sharedManager], currentCondition)
-      deliverOn:RACScheduler.mainThreadScheduler]
-     subscribeNext:^(ViewCondition *newLocation) {
-         
-//     NSString *locationImageName = [[NSString alloc] newLocation.locationName];
-     }];
     
     [[RACObserve([ViewManager sharedManager], currentCondition)
       deliverOn:RACScheduler.mainThreadScheduler]
@@ -287,6 +280,10 @@ NSString *const FlickrAPIKey = @"9eb9449f0e7fd4350dc97be3d6a3b4fe";
         [photoURLsLargeImage addObject:[NSURL URLWithString:photoURLString]];
         
         NSLog(@"photoURLsLargeImage: %@\n\n", photoURLString);
+        
+        NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: (@"%@\n\n", photoURLString)]];
+        self.backgroundFromFlickr = [UIImage imageWithData: imageData];
+        [imageData release];
     }
     
 }
