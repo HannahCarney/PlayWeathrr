@@ -43,6 +43,8 @@ NSString *const FlickrAPIKey = @"9eb9449f0e7fd4350dc97be3d6a3b4fe";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    NSLog(@"%@", self.backgroundFromFlickr);
+    
     self.screenHeight = [UIScreen mainScreen].bounds.size.height;
     
     UIImage *background = [UIImage imageNamed:@"bg"];
@@ -284,6 +286,13 @@ NSString *const FlickrAPIKey = @"9eb9449f0e7fd4350dc97be3d6a3b4fe";
         NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: (@"%@\n\n", photoURLString)]];
         self.backgroundFromFlickr = [UIImage imageWithData: imageData];
         [imageData release];
+        NSLog(@"%@", self.backgroundFromFlickr);
+        
+        self.screenHeight = [UIScreen mainScreen].bounds.size.height;
+        
+        self.backgroundImageView = [[UIImageView alloc] initWithImage:self.backgroundFromFlickr];
+        self.backgroundImageView.contentMode = UIViewContentModeScaleAspectFill;
+        [self.view addSubview: self.backgroundImageView];
     }
     
 }
