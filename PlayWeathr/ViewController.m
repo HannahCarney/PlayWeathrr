@@ -50,7 +50,6 @@ NSString *const FlickrAPIKey = @"9eb9449f0e7fd4350dc97be3d6a3b4fe";
     
     self.screenHeight = [UIScreen mainScreen].bounds.size.height;
     
-    
     [[RACObserve([ViewManager sharedManager], currentCondition)
       deliverOn:RACScheduler.mainThreadScheduler]
      subscribeNext:^(ViewCondition *newCondition) {
@@ -130,9 +129,7 @@ NSString *const FlickrAPIKey = @"9eb9449f0e7fd4350dc97be3d6a3b4fe";
     cell.textLabel.text = title;
     cell.detailTextLabel.text = @"";
     cell.imageView.image = nil;
-    
 }
-
 
 - (void)configureDailyCell:(UITableViewCell *)cell weather:(ViewCondition *)weather {
     cell.textLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:18];
@@ -175,9 +172,7 @@ NSString *const FlickrAPIKey = @"9eb9449f0e7fd4350dc97be3d6a3b4fe";
         NSLog(@"%@", self.backgroundFromFlickr);
         [self replaceBackground];
     }
-
 }
-
 
 -(void)searchFlickrPhotos:(NSString *)text
 {
@@ -192,6 +187,10 @@ NSString *const FlickrAPIKey = @"9eb9449f0e7fd4350dc97be3d6a3b4fe";
     NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
     [connection release];
     [request release];
+    if (url == nil)
+    {
+        [self defaultBackground];
+    }
 }
 
 #pragma mark - UITableViewDelegate
@@ -212,9 +211,25 @@ NSString *const FlickrAPIKey = @"9eb9449f0e7fd4350dc97be3d6a3b4fe";
     self.blurredImageView.alpha = percent;
 }
 
+- (void) defaultBackground {
+    UIImage *background = [UIImage imageNamed:@"bg"];
+    self.backgroundImageView = [[UIImageView alloc] initWithImage:background];
+    self.backgroundImageView.contentMode = UIViewContentModeScaleAspectFill;
+    [self.view addSubview: self.backgroundImageView];
+    
+    self.blurredImageView = [[UIImageView alloc] init];
+    self.blurredImageView.contentMode = UIViewContentModeScaleAspectFill;
+    self.blurredImageView.alpha = 0;
+    [self.blurredImageView setImageToBlur:background blurRadius:10 completionBlock:nil];
+    [self.view addSubview:self.blurredImageView];
+    
+    [self appSetup];
+}
+
 - (void)replaceBackground {
     
-
+    NSLog(@"this: %@", self.backgroundFromFlickr);
+    
     self.backgroundImageView = [[UIImageView alloc] initWithImage:self.backgroundFromFlickr];
     self.backgroundImageView.contentMode = UIViewContentModeScaleAspectFill;
     [self.view addSubview: self.backgroundImageView];
@@ -225,6 +240,10 @@ NSString *const FlickrAPIKey = @"9eb9449f0e7fd4350dc97be3d6a3b4fe";
     [self.blurredImageView setImageToBlur:self.backgroundFromFlickr blurRadius:10 completionBlock:nil];
     [self.view addSubview:self.blurredImageView];
     
+    [self appSetup];
+}
+
+- (void)appSetup {
     
     self.tableView = [[UITableView alloc] init];
     self.tableView.backgroundColor = [UIColor clearColor];
@@ -300,16 +319,15 @@ NSString *const FlickrAPIKey = @"9eb9449f0e7fd4350dc97be3d6a3b4fe";
     iconView.contentMode = UIViewContentModeScaleAspectFit;
     iconView.backgroundColor = [UIColor clearColor];
     [header addSubview:iconView];
-
-    
+        
     [[RACObserve([ViewManager sharedManager], currentCondition)
       deliverOn:RACScheduler.mainThreadScheduler]
      subscribeNext:^(ViewCondition *newCondition) {
-     temperatureLabel.text = [NSString stringWithFormat:@"%.0f°",newCondition.temperature.floatValue];
-     celciusLabel.text = [NSString stringWithFormat:@"C"];
-     conditionsLabel.text = [newCondition.condition capitalizedString];
-     cityLabel.text = [newCondition.locationName capitalizedString];
-     iconView.image = [UIImage imageNamed:[newCondition imageName]];
+         temperatureLabel.text = [NSString stringWithFormat:@"%.0f°",newCondition.temperature.floatValue];
+         celciusLabel.text = [NSString stringWithFormat:@"C"];
+         conditionsLabel.text = [newCondition.condition capitalizedString];
+         cityLabel.text = [newCondition.locationName capitalizedString];
+         iconView.image = [UIImage imageNamed:[newCondition imageName]];
      }];
 }
 
