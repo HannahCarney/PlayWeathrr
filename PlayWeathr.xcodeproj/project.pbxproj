@@ -32,12 +32,6 @@
 		2637FB0C1B067A240077E00F /* weather-snow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2637FAF31B067A240077E00F /* weather-snow@2x.png */; };
 		2637FB0D1B067A240077E00F /* weather-tstorm.png in Resources */ = {isa = PBXBuildFile; fileRef = 2637FAF41B067A240077E00F /* weather-tstorm.png */; };
 		2637FB0E1B067A240077E00F /* weather-tstorm@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2637FAF51B067A240077E00F /* weather-tstorm@2x.png */; };
-		2637FB1D1B067B7F0077E00F /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 2637FB121B067B7F0077E00F /* NSObject+SBJSON.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		2637FB1E1B067B7F0077E00F /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 2637FB141B067B7F0077E00F /* NSString+SBJSON.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		2637FB1F1B067B7F0077E00F /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 2637FB161B067B7F0077E00F /* SBJSON.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		2637FB201B067B7F0077E00F /* SBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 2637FB181B067B7F0077E00F /* SBJsonBase.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		2637FB211B067B7F0077E00F /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2637FB1A1B067B7F0077E00F /* SBJsonParser.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		2637FB221B067B7F0077E00F /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2637FB1C1B067B7F0077E00F /* SBJsonWriter.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		267486351B03FA9A00B7BAA2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 267486341B03FA9A00B7BAA2 /* main.m */; };
 		267486381B03FA9A00B7BAA2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 267486371B03FA9A00B7BAA2 /* AppDelegate.m */; };
 		2674863B1B03FA9A00B7BAA2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2674863A1B03FA9A00B7BAA2 /* ViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -50,6 +44,12 @@
 		2674869F1B04011300B7BAA2 /* ViewDailyForecast.m in Sources */ = {isa = PBXBuildFile; fileRef = 2674869E1B04011300B7BAA2 /* ViewDailyForecast.m */; };
 		267486A21B0401FE00B7BAA2 /* ViewCondition.m in Sources */ = {isa = PBXBuildFile; fileRef = 267486A11B0401FE00B7BAA2 /* ViewCondition.m */; };
 		67D6E2D579293E3021860077 /* libPods-PlayWeathr.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CF8211186632B9A71925F9D2 /* libPods-PlayWeathr.a */; };
+		A15423A61B06A573003EFFBF /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = A154239B1B06A573003EFFBF /* NSObject+SBJSON.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		A15423A71B06A573003EFFBF /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = A154239D1B06A573003EFFBF /* NSString+SBJSON.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		A15423A81B06A573003EFFBF /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = A154239F1B06A573003EFFBF /* SBJSON.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		A15423A91B06A573003EFFBF /* SBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = A15423A11B06A573003EFFBF /* SBJsonBase.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		A15423AA1B06A573003EFFBF /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = A15423A31B06A573003EFFBF /* SBJsonParser.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		A15423AB1B06A573003EFFBF /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = A15423A51B06A573003EFFBF /* SBJsonWriter.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,19 +89,6 @@
 		2637FAF31B067A240077E00F /* weather-snow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "weather-snow@2x.png"; sourceTree = "<group>"; };
 		2637FAF41B067A240077E00F /* weather-tstorm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "weather-tstorm.png"; sourceTree = "<group>"; };
 		2637FAF51B067A240077E00F /* weather-tstorm@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "weather-tstorm@2x.png"; sourceTree = "<group>"; };
-		2637FB101B067B7F0077E00F /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
-		2637FB111B067B7F0077E00F /* NSObject+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJSON.h"; sourceTree = "<group>"; };
-		2637FB121B067B7F0077E00F /* NSObject+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJSON.m"; sourceTree = "<group>"; };
-		2637FB131B067B7F0077E00F /* NSString+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SBJSON.h"; sourceTree = "<group>"; };
-		2637FB141B067B7F0077E00F /* NSString+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SBJSON.m"; sourceTree = "<group>"; };
-		2637FB151B067B7F0077E00F /* SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJSON.h; sourceTree = "<group>"; };
-		2637FB161B067B7F0077E00F /* SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJSON.m; sourceTree = "<group>"; };
-		2637FB171B067B7F0077E00F /* SBJsonBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonBase.h; sourceTree = "<group>"; };
-		2637FB181B067B7F0077E00F /* SBJsonBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonBase.m; sourceTree = "<group>"; };
-		2637FB191B067B7F0077E00F /* SBJsonParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonParser.h; sourceTree = "<group>"; };
-		2637FB1A1B067B7F0077E00F /* SBJsonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonParser.m; sourceTree = "<group>"; };
-		2637FB1B1B067B7F0077E00F /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
-		2637FB1C1B067B7F0077E00F /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
 		2674862F1B03FA9A00B7BAA2 /* PlayWeathr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlayWeathr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		267486331B03FA9A00B7BAA2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		267486341B03FA9A00B7BAA2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -123,6 +110,19 @@
 		2674869E1B04011300B7BAA2 /* ViewDailyForecast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewDailyForecast.m; sourceTree = "<group>"; };
 		267486A01B0401FE00B7BAA2 /* ViewCondition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewCondition.h; sourceTree = "<group>"; };
 		267486A11B0401FE00B7BAA2 /* ViewCondition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewCondition.m; sourceTree = "<group>"; };
+		A15423991B06A573003EFFBF /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
+		A154239A1B06A573003EFFBF /* NSObject+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJSON.h"; sourceTree = "<group>"; };
+		A154239B1B06A573003EFFBF /* NSObject+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJSON.m"; sourceTree = "<group>"; };
+		A154239C1B06A573003EFFBF /* NSString+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SBJSON.h"; sourceTree = "<group>"; };
+		A154239D1B06A573003EFFBF /* NSString+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SBJSON.m"; sourceTree = "<group>"; };
+		A154239E1B06A573003EFFBF /* SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJSON.h; sourceTree = "<group>"; };
+		A154239F1B06A573003EFFBF /* SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJSON.m; sourceTree = "<group>"; };
+		A15423A01B06A573003EFFBF /* SBJsonBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonBase.h; sourceTree = "<group>"; };
+		A15423A11B06A573003EFFBF /* SBJsonBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonBase.m; sourceTree = "<group>"; };
+		A15423A21B06A573003EFFBF /* SBJsonParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonParser.h; sourceTree = "<group>"; };
+		A15423A31B06A573003EFFBF /* SBJsonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonParser.m; sourceTree = "<group>"; };
+		A15423A41B06A573003EFFBF /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
+		A15423A51B06A573003EFFBF /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
 		A9A4774110D7BC1D2BEE45D4 /* Pods-PlayWeathr.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlayWeathr.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PlayWeathr/Pods-PlayWeathr.debug.xcconfig"; sourceTree = "<group>"; };
 		CF8211186632B9A71925F9D2 /* libPods-PlayWeathr.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PlayWeathr.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -186,27 +186,6 @@
 			path = "Weather Icons";
 			sourceTree = "<group>";
 		};
-		2637FB0F1B067B7F0077E00F /* JSON */ = {
-			isa = PBXGroup;
-			children = (
-				2637FB101B067B7F0077E00F /* JSON.h */,
-				2637FB111B067B7F0077E00F /* NSObject+SBJSON.h */,
-				2637FB121B067B7F0077E00F /* NSObject+SBJSON.m */,
-				2637FB131B067B7F0077E00F /* NSString+SBJSON.h */,
-				2637FB141B067B7F0077E00F /* NSString+SBJSON.m */,
-				2637FB151B067B7F0077E00F /* SBJSON.h */,
-				2637FB161B067B7F0077E00F /* SBJSON.m */,
-				2637FB171B067B7F0077E00F /* SBJsonBase.h */,
-				2637FB181B067B7F0077E00F /* SBJsonBase.m */,
-				2637FB191B067B7F0077E00F /* SBJsonParser.h */,
-				2637FB1A1B067B7F0077E00F /* SBJsonParser.m */,
-				2637FB1B1B067B7F0077E00F /* SBJsonWriter.h */,
-				2637FB1C1B067B7F0077E00F /* SBJsonWriter.m */,
-			);
-			name = JSON;
-			path = "../../../../../Downloads/JSONFlickr-Part-1/Classes/JSON";
-			sourceTree = "<group>";
-		};
 		267486261B03FA9A00B7BAA2 = {
 			isa = PBXGroup;
 			children = (
@@ -230,7 +209,7 @@
 		267486311B03FA9A00B7BAA2 /* PlayWeathr */ = {
 			isa = PBXGroup;
 			children = (
-				2637FB0F1B067B7F0077E00F /* JSON */,
+				A15423981B06A573003EFFBF /* JSON */,
 				2637FADB1B067A240077E00F /* Images */,
 				267486361B03FA9A00B7BAA2 /* AppDelegate.h */,
 				267486371B03FA9A00B7BAA2 /* AppDelegate.m */,
@@ -293,6 +272,27 @@
 				0F8DFEE920032745F841CEA3 /* Pods-PlayWeathr.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		A15423981B06A573003EFFBF /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				A15423991B06A573003EFFBF /* JSON.h */,
+				A154239A1B06A573003EFFBF /* NSObject+SBJSON.h */,
+				A154239B1B06A573003EFFBF /* NSObject+SBJSON.m */,
+				A154239C1B06A573003EFFBF /* NSString+SBJSON.h */,
+				A154239D1B06A573003EFFBF /* NSString+SBJSON.m */,
+				A154239E1B06A573003EFFBF /* SBJSON.h */,
+				A154239F1B06A573003EFFBF /* SBJSON.m */,
+				A15423A01B06A573003EFFBF /* SBJsonBase.h */,
+				A15423A11B06A573003EFFBF /* SBJsonBase.m */,
+				A15423A21B06A573003EFFBF /* SBJsonParser.h */,
+				A15423A31B06A573003EFFBF /* SBJsonParser.m */,
+				A15423A41B06A573003EFFBF /* SBJsonWriter.h */,
+				A15423A51B06A573003EFFBF /* SBJsonWriter.m */,
+			);
+			name = JSON;
+			path = "../../../Downloads/JSONFlickr-Part-1/Classes/JSON";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -456,18 +456,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				2674863B1B03FA9A00B7BAA2 /* ViewController.m in Sources */,
-				2637FB221B067B7F0077E00F /* SBJsonWriter.m in Sources */,
-				2637FB1E1B067B7F0077E00F /* NSString+SBJSON.m in Sources */,
+				A15423AB1B06A573003EFFBF /* SBJsonWriter.m in Sources */,
+				A15423A71B06A573003EFFBF /* NSString+SBJSON.m in Sources */,
 				267486961B03FE0600B7BAA2 /* ViewManager.m in Sources */,
 				267486931B03FDEA00B7BAA2 /* ViewClient.m in Sources */,
-				2637FB1F1B067B7F0077E00F /* SBJSON.m in Sources */,
+				A15423A81B06A573003EFFBF /* SBJSON.m in Sources */,
 				267486381B03FA9A00B7BAA2 /* AppDelegate.m in Sources */,
 				267486351B03FA9A00B7BAA2 /* main.m in Sources */,
 				267486A21B0401FE00B7BAA2 /* ViewCondition.m in Sources */,
-				2637FB1D1B067B7F0077E00F /* NSObject+SBJSON.m in Sources */,
-				2637FB211B067B7F0077E00F /* SBJsonParser.m in Sources */,
+				A15423A61B06A573003EFFBF /* NSObject+SBJSON.m in Sources */,
+				A15423AA1B06A573003EFFBF /* SBJsonParser.m in Sources */,
 				2674869F1B04011300B7BAA2 /* ViewDailyForecast.m in Sources */,
-				2637FB201B067B7F0077E00F /* SBJsonBase.m in Sources */,
+				A15423A91B06A573003EFFBF /* SBJsonBase.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
