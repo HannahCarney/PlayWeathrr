@@ -7,6 +7,7 @@
 @property (nonatomic, strong) UIImageView *backgroundImageView;
 @property (nonatomic, strong) UIImage *backgroundFromFlickr;
 @property (nonatomic, strong) UIImageView *blurredImageView;
+@property (nonatomic, strong) UIImage *blurredImage;
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, assign) CGFloat screenHeight;
 
@@ -40,6 +41,7 @@ NSString *const FlickrAPIKey = @"9eb9449f0e7fd4350dc97be3d6a3b4fe";
 }
 
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -47,16 +49,17 @@ NSString *const FlickrAPIKey = @"9eb9449f0e7fd4350dc97be3d6a3b4fe";
     
     self.screenHeight = [UIScreen mainScreen].bounds.size.height;
     
+    
     UIImage *background = [UIImage imageNamed:@"bg"];
     self.backgroundImageView = [[UIImageView alloc] initWithImage:background];
     self.backgroundImageView.contentMode = UIViewContentModeScaleAspectFill;
     [self.view addSubview: self.backgroundImageView];
-    
     self.blurredImageView = [[UIImageView alloc] init];
     self.blurredImageView.contentMode = UIViewContentModeScaleAspectFill;
     self.blurredImageView.alpha = 0;
     [self.blurredImageView setImageToBlur:background blurRadius:10 completionBlock:nil];
     [self.view addSubview:self.blurredImageView];
+    
     
     self.tableView = [[UITableView alloc] init];
     self.tableView.backgroundColor = [UIColor clearColor];
@@ -287,12 +290,9 @@ NSString *const FlickrAPIKey = @"9eb9449f0e7fd4350dc97be3d6a3b4fe";
         self.backgroundFromFlickr = [UIImage imageWithData: imageData];
         [imageData release];
         NSLog(@"%@", self.backgroundFromFlickr);
+        [self replaceBackground];
         
-        self.screenHeight = [UIScreen mainScreen].bounds.size.height;
-        
-        self.backgroundImageView = [[UIImageView alloc] initWithImage:self.backgroundFromFlickr];
-        self.backgroundImageView.contentMode = UIViewContentModeScaleAspectFill;
-        [self.view addSubview: self.backgroundImageView];
+
     }
     
 }
@@ -330,6 +330,32 @@ NSString *const FlickrAPIKey = @"9eb9449f0e7fd4350dc97be3d6a3b4fe";
     
     self.blurredImageView.alpha = percent;
 }
+
+- (void)replaceBackground {
+    
+
+    
+    self.backgroundImageView = [[UIImageView alloc] initWithImage:self.backgroundFromFlickr];
+    self.backgroundImageView.contentMode = UIViewContentModeScaleAspectFill;
+    [self.view addSubview: self.backgroundImageView];
+    
+    self.blurredImageView = [[UIImageView alloc] init];
+    self.blurredImageView.contentMode = UIViewContentModeScaleAspectFill;
+    self.blurredImageView.alpha = 0;
+    [self.blurredImageView setImageToBlur:self.backgroundFromFlickr blurRadius:10 completionBlock:nil];
+    [self.view addSubview:self.blurredImageView];
+    
+    
+    self.tableView = [[UITableView alloc] init];
+    self.tableView.backgroundColor = [UIColor clearColor];
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    self.tableView.separatorColor = [UIColor colorWithWhite:1 alpha:0.2];
+    self.tableView.pagingEnabled = YES;
+    [self.view addSubview:self.tableView];
+
+}
+
 
 
 @end
