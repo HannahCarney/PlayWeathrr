@@ -1,5 +1,6 @@
 #import "ViewController.h"
 #import "ViewManager.h"
+#import "NSString+SBJSON.h"
 #import <LBBlurredImage/UIImageView+LBBlurredImage.h>
 
 @interface ViewController ()
@@ -158,16 +159,14 @@ NSString *const FlickrAPIKey = @"9eb9449f0e7fd4350dc97be3d6a3b4fe";
     for (NSDictionary *photo in photos)
     {
         
-        
         // Build the URL to where the image is stored (see the Flickr API)
         // In the format https://farmX.static.flickr.com/server/id/secret
-        // Notice the "_s" which requests a "small" image 75 x 75 pixels
         NSString *photoURLString = [NSString stringWithFormat:@"https://farm%@.static.flickr.com/%@/%@_%@.jpg", [photo objectForKey:@"farm"], [photo objectForKey:@"server"], [photo objectForKey:@"id"], [photo objectForKey:@"secret"]];
         [photoURLsLargeImage addObject:[NSURL URLWithString:photoURLString]];
         
         NSLog(@"photoURLsLargeImage: %@\n\n", photoURLString);
         
-        NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: (@"%@\n\n", photoURLString)]];
+        NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: (photoURLString)]];
         self.backgroundFromFlickr = [UIImage imageWithData: imageData];
         [imageData release];
         NSLog(@"%@", self.backgroundFromFlickr);
@@ -263,7 +262,7 @@ NSString *const FlickrAPIKey = @"9eb9449f0e7fd4350dc97be3d6a3b4fe";
     cityLabel.backgroundColor = [UIColor clearColor];
     cityLabel.textColor = [UIColor whiteColor];
     cityLabel.text = @"Loading...";
-    cityLabel.font = [UIFont fontWithName:@"HelveticaNeue-UltraLight" size:18];
+    cityLabel.font = [UIFont fontWithName:@"HelveticaNeue-UltraLight-Bold" size:18];
     cityLabel.textAlignment = NSTextAlignmentCenter;
     [header addSubview:cityLabel];
     

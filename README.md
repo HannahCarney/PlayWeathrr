@@ -1,5 +1,5 @@
 # PlayWeathr
-Learning Objective C by building a weather app that knowns your location and gives you the current temperature as well as 7 day forcast. 
+Learning Objective C by building a weather app that knowns your location and gives you the current temperature as well as 7 day forcast. My App also pulls in a Flickr background picture based off of your location! Play around.
 
 ## Important
 
@@ -8,7 +8,8 @@ Scroll down to see Daily Forcast
 Technologies used
 ----------
 * Objectiv C
-* Weather API
+* OpenWeather API
+* Flickr API
 * Xcode
 * IOSimulator
 
@@ -30,15 +31,20 @@ pod install
 
 * Open XCode and File/Open/PlayWeathrr.xcworkspace
 
-* Next to "PlayWeathr" at the top change the iOS devie button to your iPhone number simulator of choice
+* Next to "PlayWeathr" at the top, change the iOS devie button to your iPhone simulator of choice
 
 * Press the Play Button
 
 * App should ask to use location services
 
-* If API doesn't load go to iOS Simulator and click Reset Content and Settings. Also Command + Option + Shift + K to clean before building.
+* Location services can be simulated by clicking PlayWeathr at the top, clicking "Edit Scheme" and altering the default location. Play around to see the different pictures!
 
-* Location services can be simulated by clicking PlayWeathr at the top, clicking "Edit Scheme" and altering the default location.
+* If App doesn't load go to iOS Simulator and click Reset Content and Settings. Also Command + Option + Shift + K to clean before building.
+
+Challenges
+----
+
+I struggled with this as my first time using Objective C. I have only used Xcode very briefly before and so had trouble with set up and with all of the options. Once I understood what I was doing, however, it flowed easier. I found a lot of documentation on the weather API and so it was a perfect way to start learning. I figured out how to debug and use the console to output my work. After I was bored of weather, I decided to try to use the Flickr API for which I couldn't find a single example of location based work. However, I figured it out with a lot of debugging. A hilarious side note is that I kept pulling through "null" as a Flickr tag and the image that would come up was of a bug! I solved that bug, but it was a funny bug indead. Please play around with changing the location on Xcode so as so see the awesome pictures peoplle have taken from around the world.
 
 Me
 ----
