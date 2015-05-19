@@ -169,7 +169,6 @@ NSString *const FlickrAPIKey = @"9eb9449f0e7fd4350dc97be3d6a3b4fe";
         NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: (photoURLString)]];
         self.backgroundFromFlickr = [UIImage imageWithData: imageData];
         [imageData release];
-        NSLog(@"%@", self.backgroundFromFlickr);
         [self replaceBackground];
     }
 }
@@ -177,7 +176,7 @@ NSString *const FlickrAPIKey = @"9eb9449f0e7fd4350dc97be3d6a3b4fe";
 -(void)searchFlickrPhotos:(NSString *)text
 {
     // Build the string to call the Flickr API
-    NSString *urlString = [NSString stringWithFormat:@"https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=%@&tags=%@&per_page=1&format=json&nojsoncallback=1", FlickrAPIKey, text];
+    NSString *urlString = [NSString stringWithFormat:@"https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=%@&tags=%@&in_gallery=true@&per_page=1&format=json&nojsoncallback=1", FlickrAPIKey, text];
     
     // Create NSURL string from formatted string
     NSURL *url = [NSURL URLWithString:urlString];
@@ -227,8 +226,6 @@ NSString *const FlickrAPIKey = @"9eb9449f0e7fd4350dc97be3d6a3b4fe";
 }
 
 - (void)replaceBackground {
-    
-    NSLog(@"this: %@", self.backgroundFromFlickr);
     
     self.backgroundImageView = [[UIImageView alloc] initWithImage:self.backgroundFromFlickr];
     self.backgroundImageView.contentMode = UIViewContentModeScaleAspectFill;
