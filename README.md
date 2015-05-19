@@ -8,7 +8,7 @@ Scroll down to see Daily Forcast
 Screenshot
 ---
 <div align="center">
-        <img width="45%" src="images/screenshot.png">
+        <img width="25%" src="images/screenshot.png">
 </div>
 
 Technologies used
