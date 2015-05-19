@@ -40,7 +40,7 @@ pod install
 
 * Press YES if app asks to use location services
 
-* Location services can be simulated by clicking PlayWeathr at the top next to the "A", clicking "Edit Scheme" and altering the default location. Play around to see the different pictures!
+* Location services can be simulated by clicking PlayWeathr at the top next to the "A", clicking "Edit Scheme", then options and altering the default location. Play around to see the different pictures!
 
 * If App doesn't load go to iOS Simulator and click Reset Content and Settings. Also Command + Option + Shift + K to clean before building.
 
