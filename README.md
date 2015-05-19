@@ -5,6 +5,12 @@ Learning Objective C by building a weather app that knowns your location and giv
 
 Scroll down to see Daily Forcast
 
+Screenshot
+---
+<div align="center">
+        <img width="45%" src="images/screenshot.png">
+</div>
+
 Technologies used
 ----------
 * Objectiv C
