@@ -1,45 +1,33 @@
 PODS:
-  - HexColors (2.3.0)
-  - LBBlurredImage (0.2.2)
-  - Mantle (2.0.7):
-    - Mantle/extobjc (= 2.0.7)
-  - Mantle/extobjc (2.0.7)
-  - ReactiveCocoa (4.1.0):
-    - ReactiveCocoa/UI (= 4.1.0)
-    - Result (~> 2.0)
-  - ReactiveCocoa/Core (4.1.0):
+  - HexColors (2.2.1)
+  - LBBlurredImage (0.2.0)
+  - Mantle (1.5.1):
+    - Mantle/extobjc (= 1.5.1)
+  - Mantle/extobjc (1.5.1)
+  - ReactiveCocoa (2.3.1):
+    - ReactiveCocoa/UI (= 2.3.1)
+  - ReactiveCocoa/Core (2.3.1):
     - ReactiveCocoa/no-arc
-    - Result (~> 2.0)
-  - ReactiveCocoa/no-arc (4.1.0):
-    - Result (~> 2.0)
-  - ReactiveCocoa/UI (4.1.0):
+  - ReactiveCocoa/no-arc (2.3.1)
+  - ReactiveCocoa/UI (2.3.1):
     - ReactiveCocoa/Core
-    - Result (~> 2.0)
-  - Result (2.0.0)
-  - TSMessages (0.9.13):
-    - HexColors (~> 2.3.0)
+  - SBJson4 (4.0.2)
+  - TSMessages (0.9.11):
+    - HexColors (~> 2.2.0)
 
 DEPENDENCIES:
-  - LBBlurredImage
-  - Mantle
-  - ReactiveCocoa
-  - TSMessages (from `https://github.com/KrauseFx/TSMessages.git`)
-
-EXTERNAL SOURCES:
-  TSMessages:
-    :git: https://github.com/KrauseFx/TSMessages.git
-
-CHECKOUT OPTIONS:
-  TSMessages:
-    :commit: e63f23304f781dcadbac31e6d338f3105fb3cd78
-    :git: https://github.com/KrauseFx/TSMessages.git
+  - LBBlurredImage (= 0.2.0)
+  - Mantle (= 1.5.1)
+  - ReactiveCocoa (= 2.3.1)
+  - SBJson4 (~> 4.0.1)
+  - TSMessages (= 0.9.11)
 
 SPEC CHECKSUMS:
-  HexColors: 6ad3947c3447a055a3aa8efa859def096351fe5f
-  LBBlurredImage: 700634c17922bc2d22343118e7deb6a3ca12db43
-  Mantle: bc40bb061d8c2c6fb48d5083e04d928c3b7f73d9
-  ReactiveCocoa: d70004d7a366a7b8e87e60ce2347182c77701949
-  Result: 9e75e1111c774c6ac594e14907b15057053a7959
-  TSMessages: 6e403b790139636c15ab4f51946537095e03e79c
+  HexColors: abfd172e329dab59888614ccba6f216cec59289d
+  LBBlurredImage: 33fc146058f2f607419b1db3eb1bfc1b1d9ac96c
+  Mantle: 1ec9076f091f3a2f95cb2c94939e92dba35c97e1
+  ReactiveCocoa: 3fe9b233ca6db810e86681b5749488564c1179a1
+  SBJson4: b64afe0d4607e9e339b6d7538b04611e756f71db
+  TSMessages: cda5e3a623bcf1912b1c436eb754b07651289b74
 
 COCOAPODS: 0.39.0

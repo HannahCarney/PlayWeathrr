@@ -77,10 +77,12 @@ NSString *const OpenWeathrAPIKey = @"&APPID=b98230b99509908685e545de7bf59ea4";
     // Use the generic fetch method and map results to convert into an array of Mantle objects
     return [[self fetchJSONFromURL:url] map:^(NSDictionary *json) {
         // Build a sequence from the list of raw JSON
+        NSLog(@"%@",json);
         RACSequence *list = [json[@"list"] rac_sequence];
         
         // Use a function to map results from JSON to Mantle objects
         return [[list map:^(NSDictionary *item) {
+            NSLog(@"thisthis%@",[MTLJSONAdapter modelOfClass:[ViewDailyForecast class] fromJSONDictionary:item error:nil]);
             return [MTLJSONAdapter modelOfClass:[ViewDailyForecast class] fromJSONDictionary:item error:nil];
         }] array];
     }];

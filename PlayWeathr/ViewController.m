@@ -47,7 +47,8 @@ NSString *const FlickrAPIKey = @"9eb9449f0e7fd4350dc97be3d6a3b4fe";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
     self.screenHeight = [UIScreen mainScreen].bounds.size.height;
     
     [[RACObserve([ViewManager sharedManager], currentCondition)
@@ -183,14 +184,43 @@ NSString *const FlickrAPIKey = @"9eb9449f0e7fd4350dc97be3d6a3b4fe";
     
     // Setup and start async download
     NSURLRequest *request = [[NSURLRequest alloc] initWithURL: url];
-    NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
-    [connection release];
-    [request release];
-    if (url == nil)
-    {
-        [self defaultBackground];
-    }
-}
+    NSURLSession *session = [NSURLSession sharedSession];
+    NSURLSessionDataTask *connection = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error){
+        if (url == nil)
+        {
+            [self defaultBackground];
+        }
+        NSString *jsonString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        
+        NSLog(@"jsonString: %@", jsonString);
+        
+        // Create a dictionary from the JSON string
+        NSDictionary *results = [jsonString JSONValue];
+        
+        // Build an array from the dictionary for easy access to each entry
+        NSArray *photos = [[results objectForKey:@"photos"] objectForKey:@"photo"];
+        
+        // Loop through each entry in the dictionary...
+        for (NSDictionary *photo in photos)
+        {
+            // Build the URL to where the image is stored (see the Flickr API)
+            // In the format https://farmX.static.flickr.com/server/id/secret
+            NSString *photoURLString = [NSString stringWithFormat:@"https://farm%@.static.flickr.com/%@/%@_%@.jpg", [photo objectForKey:@"farm"], [photo objectForKey:@"server"], [photo objectForKey:@"id"], [photo objectForKey:@"secret"]];
+            [photoURLsLargeImage addObject:[NSURL URLWithString:photoURLString]];
+            
+            NSLog(@"photoURLsLargeImage: %@\n\n", photoURLString);
+            
+            NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: (photoURLString)]];
+            self.backgroundFromFlickr = [UIImage imageWithData: imageData];
+            [imageData release];
+            [self replaceBackground];
+
+        }
+    }];
+    [connection resume];
+
+  }
+
 
 #pragma mark - UITableViewDelegate
 

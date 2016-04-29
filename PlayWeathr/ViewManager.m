@@ -86,6 +86,7 @@
 - (RACSignal *)updateCurrentConditions {
     return [[self.client fetchCurrentConditionsForLocation:self.currentLocation.coordinate] doNext:^(ViewCondition *condition) {
         self.currentCondition = condition;
+        NSLog(@"currentCondition%@", condition);
         
     }];
 }
@@ -94,6 +95,7 @@
 - (RACSignal *)updateDailyForecast {
     return [[self.client fetchDailyForecastForLocation:self.currentLocation.coordinate] doNext:^(NSArray *conditions) {
         self.dailyForecast = conditions;
+        NSLog(@"currentConditions%@", conditions);
     }];
 }
 
