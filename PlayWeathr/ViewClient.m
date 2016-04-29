@@ -16,6 +16,8 @@
 
 @end
 
+NSString *const OpenWeathrAPIKey = @"&APPID=b98230b99509908685e545de7bf59ea4";
+
 @implementation ViewClient
 
 - (id)init {
@@ -59,7 +61,7 @@
 }
 
 - (RACSignal *)fetchCurrentConditionsForLocation:(CLLocationCoordinate2D)coordinate {
-    NSString *urlString = [NSString stringWithFormat:@"http://api.openweathermap.org/data/2.5/weather?lat=%f&lon=%f&units=metric",coordinate.latitude, coordinate.longitude];
+   NSString *urlString = [NSString stringWithFormat:@"http://api.openweathermap.org/data/2.5/weather?lat=%f&lon=%f&units=metric%@",coordinate.latitude, coordinate.longitude, OpenWeathrAPIKey];
     NSURL *url = [NSURL URLWithString:urlString];
     
     return [[self fetchJSONFromURL:url] map:^(NSDictionary *json) {
@@ -69,7 +71,7 @@
 
 
 - (RACSignal *)fetchDailyForecastForLocation:(CLLocationCoordinate2D)coordinate {
-    NSString *urlString = [NSString stringWithFormat:@"http://api.openweathermap.org/data/2.5/forecast/daily?lat=%f&lon=%f&units=metric&cnt=7",coordinate.latitude, coordinate.longitude];
+    NSString *urlString = [NSString stringWithFormat:@"http://api.openweathermap.org/data/2.5/forecast/daily?lat=%f&lon=%f&units=metric&cnt=7%@",coordinate.latitude, coordinate.longitude, OpenWeathrAPIKey];
     NSURL *url = [NSURL URLWithString:urlString];
     
     // Use the generic fetch method and map results to convert into an array of Mantle objects

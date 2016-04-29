@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2637FAF61B067A240077E00F /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 2637FADC1B067A240077E00F /* bg.png */; };
 		2637FAF71B067A240077E00F /* weather-broken.png in Resources */ = {isa = PBXBuildFile; fileRef = 2637FADE1B067A240077E00F /* weather-broken.png */; };
 		2637FAF81B067A240077E00F /* weather-broken@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2637FADF1B067A240077E00F /* weather-broken@2x.png */; };
 		2637FAF91B067A240077E00F /* weather-clear.png in Resources */ = {isa = PBXBuildFile; fileRef = 2637FAE01B067A240077E00F /* weather-clear.png */; };
@@ -73,7 +72,6 @@
 
 /* Begin PBXFileReference section */
 		0F8DFEE920032745F841CEA3 /* Pods-PlayWeathr.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlayWeathr.release.xcconfig"; path = "Pods/Target Support Files/Pods-PlayWeathr/Pods-PlayWeathr.release.xcconfig"; sourceTree = "<group>"; };
-		2637FADC1B067A240077E00F /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg.png; sourceTree = "<group>"; };
 		2637FADE1B067A240077E00F /* weather-broken.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "weather-broken.png"; sourceTree = "<group>"; };
 		2637FADF1B067A240077E00F /* weather-broken@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "weather-broken@2x.png"; sourceTree = "<group>"; };
 		2637FAE01B067A240077E00F /* weather-clear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "weather-clear.png"; sourceTree = "<group>"; };
@@ -176,7 +174,6 @@
 		2637FADB1B067A240077E00F /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				2637FADC1B067A240077E00F /* bg.png */,
 				2637FADD1B067A240077E00F /* Weather Icons */,
 			);
 			path = Images;
@@ -440,7 +437,6 @@
 				267486431B03FA9A00B7BAA2 /* LaunchScreen.xib in Resources */,
 				2637FB071B067A240077E00F /* weather-scattered.png in Resources */,
 				2637FAFA1B067A240077E00F /* weather-clear@2x.png in Resources */,
-				2637FAF61B067A240077E00F /* bg.png in Resources */,
 				267486401B03FA9A00B7BAA2 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
