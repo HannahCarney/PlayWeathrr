@@ -6,7 +6,7 @@ target 'PlayWeathr' do
 
 pod 'Mantle'
 pod 'LBBlurredImage'
-pod 'TSMessages'
+pod 'TSMessages', :git => 'https://github.com/KrauseFx/TSMessages.git'
 pod 'ReactiveCocoa'
 
 end

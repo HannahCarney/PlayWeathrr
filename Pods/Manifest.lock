@@ -1,5 +1,5 @@
 PODS:
-  - HexColors (2.2.1)
+  - HexColors (2.3.0)
   - LBBlurredImage (0.2.2)
   - Mantle (2.0.7):
     - Mantle/extobjc (= 2.0.7)
@@ -16,21 +16,30 @@ PODS:
     - ReactiveCocoa/Core
     - Result (~> 2.0)
   - Result (2.0.0)
-  - TSMessages (0.9.12):
-    - HexColors (~> 2.2.0)
+  - TSMessages (0.9.13):
+    - HexColors (~> 2.3.0)
 
 DEPENDENCIES:
   - LBBlurredImage
   - Mantle
   - ReactiveCocoa
-  - TSMessages
+  - TSMessages (from `https://github.com/KrauseFx/TSMessages.git`)
+
+EXTERNAL SOURCES:
+  TSMessages:
+    :git: https://github.com/KrauseFx/TSMessages.git
+
+CHECKOUT OPTIONS:
+  TSMessages:
+    :commit: e63f23304f781dcadbac31e6d338f3105fb3cd78
+    :git: https://github.com/KrauseFx/TSMessages.git
 
 SPEC CHECKSUMS:
-  HexColors: abfd172e329dab59888614ccba6f216cec59289d
+  HexColors: 6ad3947c3447a055a3aa8efa859def096351fe5f
   LBBlurredImage: 700634c17922bc2d22343118e7deb6a3ca12db43
   Mantle: bc40bb061d8c2c6fb48d5083e04d928c3b7f73d9
   ReactiveCocoa: d70004d7a366a7b8e87e60ce2347182c77701949
   Result: 9e75e1111c774c6ac594e14907b15057053a7959
-  TSMessages: c8cc7b80f2a833af533872cd02010cac061532cc
+  TSMessages: 6e403b790139636c15ab4f51946537095e03e79c
 
 COCOAPODS: 0.39.0
