@@ -1,1 +1,1 @@
-../../../../ReactiveCocoa/ReactiveCocoaFramework/ReactiveCocoa/RACMulticastConnection+Private.h
+../../../../ReactiveCocoa/ReactiveCocoa/Objective-C/RACMulticastConnection+Private.h

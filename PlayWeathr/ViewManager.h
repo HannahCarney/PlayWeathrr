@@ -7,12 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <ReactiveCocoa/ReactiveCocoa/ReactiveCocoa.h>
+#import <ReactiveCocoa/ReactiveCocoa.h>
+#import <CoreLocation/CoreLocation.h>
 
 #import "ViewCondition.h"
 
-@import Foundation;
-@import CoreLocation;
+//@import Foundation;
+//@import CoreLocation;
 
 @interface ViewManager : NSObject
 <CLLocationManagerDelegate>

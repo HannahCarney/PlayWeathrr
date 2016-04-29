@@ -7,10 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <ReactiveCocoa/ReactiveCocoa/ReactiveCocoa.h>
-
-@import CoreLocation;
-@import Foundation;
+#import <ReactiveCocoa/ReactiveCocoa.h>
+#import <CoreLocation/CoreLocation.h>
+//
+//@import CoreLocation;
+//@import Foundation;
 
 @interface ViewClient : NSObject
 

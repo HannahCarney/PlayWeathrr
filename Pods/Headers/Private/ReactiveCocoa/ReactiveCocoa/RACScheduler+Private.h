@@ -1,1 +1,1 @@
-../../../../ReactiveCocoa/ReactiveCocoaFramework/ReactiveCocoa/RACScheduler+Private.h
+../../../../ReactiveCocoa/ReactiveCocoa/Objective-C/RACScheduler+Private.h

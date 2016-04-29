@@ -1,1 +1,1 @@
-../../../../ReactiveCocoa/ReactiveCocoaFramework/ReactiveCocoa/RACTuple.h
+../../../../ReactiveCocoa/ReactiveCocoa/Objective-C/RACTuple.h

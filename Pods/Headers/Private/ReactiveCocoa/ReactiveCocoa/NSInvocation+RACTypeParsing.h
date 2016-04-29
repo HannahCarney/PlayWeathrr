@@ -1,1 +1,1 @@
-../../../../ReactiveCocoa/ReactiveCocoaFramework/ReactiveCocoa/NSInvocation+RACTypeParsing.h
+../../../../ReactiveCocoa/ReactiveCocoa/Objective-C/NSInvocation+RACTypeParsing.h

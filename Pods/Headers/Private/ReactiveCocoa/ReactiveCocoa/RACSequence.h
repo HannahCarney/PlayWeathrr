@@ -1,1 +1,1 @@
-../../../../ReactiveCocoa/ReactiveCocoaFramework/ReactiveCocoa/RACSequence.h
+../../../../ReactiveCocoa/ReactiveCocoa/Objective-C/RACSequence.h

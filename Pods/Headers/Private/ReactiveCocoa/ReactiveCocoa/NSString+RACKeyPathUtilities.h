@@ -1,1 +1,1 @@
-../../../../ReactiveCocoa/ReactiveCocoaFramework/ReactiveCocoa/NSString+RACKeyPathUtilities.h
+../../../../ReactiveCocoa/ReactiveCocoa/Objective-C/NSString+RACKeyPathUtilities.h

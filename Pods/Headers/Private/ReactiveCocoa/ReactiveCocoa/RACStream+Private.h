@@ -1,1 +1,1 @@
-../../../../ReactiveCocoa/ReactiveCocoaFramework/ReactiveCocoa/RACStream+Private.h
+../../../../ReactiveCocoa/ReactiveCocoa/Objective-C/RACStream+Private.h

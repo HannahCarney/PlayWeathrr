@@ -49,7 +49,8 @@
 		26A30F1C1B1491140097EA23 /* SBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A30F141B1491140097EA23 /* SBJsonBase.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		26A30F1D1B1491140097EA23 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A30F161B1491140097EA23 /* SBJsonParser.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		26A30F1E1B1491140097EA23 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A30F181B1491140097EA23 /* SBJsonWriter.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		67D6E2D579293E3021860077 /* libPods-PlayWeathr.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CF8211186632B9A71925F9D2 /* libPods-PlayWeathr.a */; };
+		97286D661CD38EBE008A81D4 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97286D651CD38EBE008A81D4 /* CoreLocation.framework */; };
+		C64FCC4DC921C7705DEC48D2 /* Pods_PlayWeathr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C08A81574A49500507952AA2 /* Pods_PlayWeathr.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -123,8 +124,9 @@
 		26A30F161B1491140097EA23 /* SBJsonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonParser.m; sourceTree = "<group>"; };
 		26A30F171B1491140097EA23 /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
 		26A30F181B1491140097EA23 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
+		97286D651CD38EBE008A81D4 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		A9A4774110D7BC1D2BEE45D4 /* Pods-PlayWeathr.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlayWeathr.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PlayWeathr/Pods-PlayWeathr.debug.xcconfig"; sourceTree = "<group>"; };
-		CF8211186632B9A71925F9D2 /* libPods-PlayWeathr.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PlayWeathr.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C08A81574A49500507952AA2 /* Pods_PlayWeathr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PlayWeathr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,7 +134,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				67D6E2D579293E3021860077 /* libPods-PlayWeathr.a in Frameworks */,
+				97286D661CD38EBE008A81D4 /* CoreLocation.framework in Frameworks */,
+				C64FCC4DC921C7705DEC48D2 /* Pods_PlayWeathr.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,7 +284,8 @@
 		340F8D607A9A2410E8D85E9E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				CF8211186632B9A71925F9D2 /* libPods-PlayWeathr.a */,
+				97286D651CD38EBE008A81D4 /* CoreLocation.framework */,
+				C08A81574A49500507952AA2 /* Pods_PlayWeathr.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -307,6 +311,7 @@
 				2674862C1B03FA9A00B7BAA2 /* Frameworks */,
 				2674862D1B03FA9A00B7BAA2 /* Resources */,
 				A2436F04C9BDA09CE725C658 /* Copy Pods Resources */,
+				853DA64F0E011A87D5F38E99 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -431,6 +436,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		853DA64F0E011A87D5F38E99 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PlayWeathr/Pods-PlayWeathr-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		A2436F04C9BDA09CE725C658 /* Copy Pods Resources */ = {
@@ -590,17 +610,18 @@
 			baseConfigurationReference = A9A4774110D7BC1D2BEE45D4 /* Pods-PlayWeathr.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				INFOPLIST_FILE = PlayWeathr/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
-					"-ObjC",
-					"-l\"Pods-PlayWeathr-HexColors\"",
-					"-l\"Pods-PlayWeathr-LBBlurredImage\"",
-					"-l\"Pods-PlayWeathr-Mantle\"",
-					"-l\"Pods-PlayWeathr-ReactiveCocoa\"",
-					"-l\"Pods-PlayWeathr-TSMessages\"",
+					"-l\"HexColors\"",
+					"-l\"LBBlurredImage\"",
+					"-l\"Mantle\"",
+					"-l\"ReactiveCocoa\"",
+					"-l\"TSMessages\"",
 					"-framework",
 					"\"Accelerate\"",
 					"-framework",
@@ -619,17 +640,18 @@
 			baseConfigurationReference = 0F8DFEE920032745F841CEA3 /* Pods-PlayWeathr.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				INFOPLIST_FILE = PlayWeathr/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
-					"-ObjC",
-					"-l\"Pods-PlayWeathr-HexColors\"",
-					"-l\"Pods-PlayWeathr-LBBlurredImage\"",
-					"-l\"Pods-PlayWeathr-Mantle\"",
-					"-l\"Pods-PlayWeathr-ReactiveCocoa\"",
-					"-l\"Pods-PlayWeathr-TSMessages\"",
+					"-l\"HexColors\"",
+					"-l\"LBBlurredImage\"",
+					"-l\"Mantle\"",
+					"-l\"ReactiveCocoa\"",
+					"-l\"TSMessages\"",
 					"-framework",
 					"\"Accelerate\"",
 					"-framework",

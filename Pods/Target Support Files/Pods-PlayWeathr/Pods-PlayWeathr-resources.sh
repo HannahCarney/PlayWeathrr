@@ -9,7 +9,7 @@ RESOURCES_TO_COPY=${PODS_ROOT}/resources-to-copy-${TARGETNAME}.txt
 XCASSET_FILES=()
 
 realpath() {
-  DIRECTORY=$(cd "${1%/*}" && pwd)
+  DIRECTORY="$(cd "${1%/*}" && pwd)"
   FILENAME="${1##*/}"
   echo "$DIRECTORY/$FILENAME"
 }
@@ -22,7 +22,7 @@ install_resource()
       ibtool --reference-external-strings-file --errors --warnings --notices --output-format human-readable-text --compile "${CONFIGURATION_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/`basename \"$1\" .storyboard`.storyboardc" "${PODS_ROOT}/$1" --sdk "${SDKROOT}"
       ;;
     *.xib)
-        echo "ibtool --reference-external-strings-file --errors --warnings --notices --output-format human-readable-text --compile ${CONFIGURATION_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/`basename \"$1\" .xib`.nib ${PODS_ROOT}/$1 --sdk ${SDKROOT}"
+      echo "ibtool --reference-external-strings-file --errors --warnings --notices --output-format human-readable-text --compile ${CONFIGURATION_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/`basename \"$1\" .xib`.nib ${PODS_ROOT}/$1 --sdk ${SDKROOT}"
       ibtool --reference-external-strings-file --errors --warnings --notices --output-format human-readable-text --compile "${CONFIGURATION_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/`basename \"$1\" .xib`.nib" "${PODS_ROOT}/$1" --sdk "${SDKROOT}"
       ;;
     *.framework)
@@ -57,47 +57,11 @@ install_resource()
       ;;
   esac
 }
-if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_resource "TSMessages/Pod/Assets/NotificationBackgroundError.png"
-  install_resource "TSMessages/Pod/Assets/NotificationBackgroundError@2x.png"
-  install_resource "TSMessages/Pod/Assets/NotificationBackgroundErrorIcon.png"
-  install_resource "TSMessages/Pod/Assets/NotificationBackgroundErrorIcon@2x.png"
-  install_resource "TSMessages/Pod/Assets/NotificationBackgroundMessage.png"
-  install_resource "TSMessages/Pod/Assets/NotificationBackgroundMessage@2x.png"
-  install_resource "TSMessages/Pod/Assets/NotificationBackgroundSuccess.png"
-  install_resource "TSMessages/Pod/Assets/NotificationBackgroundSuccess@2x.png"
-  install_resource "TSMessages/Pod/Assets/NotificationBackgroundSuccessIcon.png"
-  install_resource "TSMessages/Pod/Assets/NotificationBackgroundSuccessIcon@2x.png"
-  install_resource "TSMessages/Pod/Assets/NotificationBackgroundWarning.png"
-  install_resource "TSMessages/Pod/Assets/NotificationBackgroundWarning@2x.png"
-  install_resource "TSMessages/Pod/Assets/NotificationBackgroundWarningIcon.png"
-  install_resource "TSMessages/Pod/Assets/NotificationBackgroundWarningIcon@2x.png"
-  install_resource "TSMessages/Pod/Assets/NotificationButtonBackground.png"
-  install_resource "TSMessages/Pod/Assets/NotificationButtonBackground@2x.png"
-  install_resource "TSMessages/Pod/Assets/TSMessagesDefaultDesign.json"
-fi
-if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_resource "TSMessages/Pod/Assets/NotificationBackgroundError.png"
-  install_resource "TSMessages/Pod/Assets/NotificationBackgroundError@2x.png"
-  install_resource "TSMessages/Pod/Assets/NotificationBackgroundErrorIcon.png"
-  install_resource "TSMessages/Pod/Assets/NotificationBackgroundErrorIcon@2x.png"
-  install_resource "TSMessages/Pod/Assets/NotificationBackgroundMessage.png"
-  install_resource "TSMessages/Pod/Assets/NotificationBackgroundMessage@2x.png"
-  install_resource "TSMessages/Pod/Assets/NotificationBackgroundSuccess.png"
-  install_resource "TSMessages/Pod/Assets/NotificationBackgroundSuccess@2x.png"
-  install_resource "TSMessages/Pod/Assets/NotificationBackgroundSuccessIcon.png"
-  install_resource "TSMessages/Pod/Assets/NotificationBackgroundSuccessIcon@2x.png"
-  install_resource "TSMessages/Pod/Assets/NotificationBackgroundWarning.png"
-  install_resource "TSMessages/Pod/Assets/NotificationBackgroundWarning@2x.png"
-  install_resource "TSMessages/Pod/Assets/NotificationBackgroundWarningIcon.png"
-  install_resource "TSMessages/Pod/Assets/NotificationBackgroundWarningIcon@2x.png"
-  install_resource "TSMessages/Pod/Assets/NotificationButtonBackground.png"
-  install_resource "TSMessages/Pod/Assets/NotificationButtonBackground@2x.png"
-  install_resource "TSMessages/Pod/Assets/TSMessagesDefaultDesign.json"
-fi
 
+mkdir -p "${CONFIGURATION_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"
 rsync -avr --copy-links --no-relative --exclude '*/.svn/*' --files-from="$RESOURCES_TO_COPY" / "${CONFIGURATION_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"
-if [[ "${ACTION}" == "install" ]]; then
+if [[ "${ACTION}" == "install" ]] && [[ "${SKIP_INSTALL}" == "NO" ]]; then
+  mkdir -p "${INSTALL_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"
   rsync -avr --copy-links --no-relative --exclude '*/.svn/*' --files-from="$RESOURCES_TO_COPY" / "${INSTALL_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"
 fi
 rm -f "$RESOURCES_TO_COPY"

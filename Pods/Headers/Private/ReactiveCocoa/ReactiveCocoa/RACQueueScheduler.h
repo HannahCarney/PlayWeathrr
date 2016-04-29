@@ -1,1 +1,1 @@
-../../../../ReactiveCocoa/ReactiveCocoaFramework/ReactiveCocoa/RACQueueScheduler.h
+../../../../ReactiveCocoa/ReactiveCocoa/Objective-C/RACQueueScheduler.h

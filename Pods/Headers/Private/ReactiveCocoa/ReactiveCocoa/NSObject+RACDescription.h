@@ -1,1 +1,1 @@
-../../../../ReactiveCocoa/ReactiveCocoaFramework/ReactiveCocoa/NSObject+RACDescription.h
+../../../../ReactiveCocoa/ReactiveCocoa/Objective-C/NSObject+RACDescription.h

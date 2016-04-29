@@ -1,33 +1,36 @@
 PODS:
   - HexColors (2.2.1)
-  - LBBlurredImage (0.2.0)
-  - Mantle (1.5.1):
-    - Mantle/extobjc (= 1.5.1)
-  - Mantle/extobjc (1.5.1)
-  - ReactiveCocoa (2.3.1):
-    - ReactiveCocoa/UI (= 2.3.1)
-  - ReactiveCocoa/Core (2.3.1):
+  - LBBlurredImage (0.2.2)
+  - Mantle (2.0.7):
+    - Mantle/extobjc (= 2.0.7)
+  - Mantle/extobjc (2.0.7)
+  - ReactiveCocoa (4.1.0):
+    - ReactiveCocoa/UI (= 4.1.0)
+    - Result (~> 2.0)
+  - ReactiveCocoa/Core (4.1.0):
     - ReactiveCocoa/no-arc
-  - ReactiveCocoa/no-arc (2.3.1)
-  - ReactiveCocoa/UI (2.3.1):
+    - Result (~> 2.0)
+  - ReactiveCocoa/no-arc (4.1.0):
+    - Result (~> 2.0)
+  - ReactiveCocoa/UI (4.1.0):
     - ReactiveCocoa/Core
-  - SBJson4 (4.0.1)
-  - TSMessages (0.9.11):
-    - HexColors
+    - Result (~> 2.0)
+  - Result (2.0.0)
+  - TSMessages (0.9.12):
+    - HexColors (~> 2.2.0)
 
 DEPENDENCIES:
-  - LBBlurredImage (= 0.2.0)
-  - Mantle (= 1.5.1)
-  - ReactiveCocoa (= 2.3.1)
-  - SBJson4 (~> 4.0.1)
-  - TSMessages (= 0.9.11)
+  - LBBlurredImage
+  - Mantle
+  - ReactiveCocoa
+  - TSMessages
 
 SPEC CHECKSUMS:
   HexColors: abfd172e329dab59888614ccba6f216cec59289d
-  LBBlurredImage: 33fc146058f2f607419b1db3eb1bfc1b1d9ac96c
-  Mantle: 1ec9076f091f3a2f95cb2c94939e92dba35c97e1
-  ReactiveCocoa: 334468a83b2c5f669f7cfb9a084415ee23219b4f
-  SBJson4: 33fb086791ad510a7f42747f207eba5a7b4b5cf9
-  TSMessages: 36965f3cbe0a4c68f563bac77cbd00f4333dd459
+  LBBlurredImage: 700634c17922bc2d22343118e7deb6a3ca12db43
+  Mantle: bc40bb061d8c2c6fb48d5083e04d928c3b7f73d9
+  ReactiveCocoa: d70004d7a366a7b8e87e60ce2347182c77701949
+  Result: 9e75e1111c774c6ac594e14907b15057053a7959
+  TSMessages: c8cc7b80f2a833af533872cd02010cac061532cc
 
-COCOAPODS: 0.37.1
+COCOAPODS: 0.39.0

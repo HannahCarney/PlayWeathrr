@@ -1,1 +1,1 @@
-../../../../ReactiveCocoa/ReactiveCocoaFramework/ReactiveCocoa/RACIndexSetSequence.h
+../../../../ReactiveCocoa/ReactiveCocoa/Objective-C/RACIndexSetSequence.h

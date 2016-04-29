@@ -1,1 +1,1 @@
-../../../../ReactiveCocoa/ReactiveCocoaFramework/ReactiveCocoa/NSObject+RACLifting.h
+../../../../ReactiveCocoa/ReactiveCocoa/Objective-C/NSObject+RACLifting.h
